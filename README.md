@@ -6,7 +6,7 @@
 
 ## Setup
 
-* Clone the repo and run `cd playwright-csharp`
+* Clone the repo and run `cd csharp-playwright-browserstack`
 * Set `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY` as environment variables with your [BrowserStack Username and Access Key](https://www.browserstack.com/accounts/settings)
 * Run `dotnet build`
 
