@@ -31,22 +31,17 @@ class PlaywrightLocalTest
         {
             page.SetDefaultTimeout(60000);
             await page.GotoAsync("https://localhost:3000/");
-            await page.Locator("#signin").ClickAsync();
-            await page.FillAsync("#react-select-2-input", "fav_user");
-            await page.PressAsync("#react-select-2-input", "Enter");
-            await page.FillAsync("#react-select-3-input", "testingisfun99");
-            await page.PressAsync("#react-select-3-input", "Enter");
-            await page.Locator(".Button_root__24MxS").ClickAsync();
-            var username = await page.Locator(".username").TextContentAsync();
+            await page.Locator("#\\31 > .shelf-item__buy-btn").ClickAsync();
 
-            if (username == "fav_user")
+            var text = await page.Locator("#__next > div > div > div.float-cart.float-cart--open > div.float-cart__content > div.float-cart__shelf-container > div > div.shelf-item__details > p.title").TextContentAsync();
+
+            if (text == "iPhone 12")
             {
-                // following line of code is responsible for marking the status of the test on BrowserStack as 'passed'. You can use this code in your after hook after each test
-                await MarkTestStatus("passed", "Login Done", page);
+                await MarkTestStatus("passed", "Item Added", page);
             }
             else
             {
-                await MarkTestStatus("failed", "Login Failed", page);
+                await MarkTestStatus("failed", "Test Failed", page);
             }
         }
         catch (Exception err)
