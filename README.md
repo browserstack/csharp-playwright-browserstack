@@ -12,12 +12,9 @@
 
 ## Running your tests
 
-- To run a single test, run `dotnet run single`
-- To run a parallel test, run command `dotnet run parallel`
-- To run sessions on emulated devices, 
-`dotnet run iphonetest` or `dotnet run pixeltest`
-You can specify any device name from the below list: 
-https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/server/deviceDescriptorsSource.json
+- To run a single test, run `dotnet test --filter "SampleTest3"`
+- To run a parallel test, run command `dotnet test --filter "SampleTest3|SampleTest2|SampleTest1"`
+- To run a parallel test with workers, run command `dotnet test --filter "SampleTest3|SampleTest2|SampleTest1" -- NUnit.NumberOfTestWorkers=2`
 
   ### Run sample test on privately hosted websites
 
@@ -29,7 +26,7 @@ https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/s
         * [Windows (XP and above)](https://www.browserstack.com/browserstack-local/BrowserStackLocal-win32.zip)
     2. Once you have downloaded and unzipped the file, you can initiate the binary by running the command: `./BrowserStackLocal --key YOUR_ACCESS_KEY`
     3. Once you see the terminal say "[SUCCESS]" You can now access your local server(s) in our remote browser”, your local testing connection is considered established.
-    4. You can then run the sample Local test using `dotnet run local`
+    <!-- 4. You can then run the sample Local test using `dotnet run local` -->
 
 
 ## Notes
