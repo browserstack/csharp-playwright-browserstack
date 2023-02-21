@@ -37,60 +37,49 @@ class PlaywrightParallelTest
         string? BROWSERSTACK_USERNAME = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
         string? BROWSERSTACK_ACCESS_KEY = Environment.GetEnvironmentVariable("BROWSERSTACK_ACCESS_KEY");
 
-        Dictionary<string, string> catalinaChromeCap = new Dictionary<string, string>();
-        catalinaChromeCap.Add("browser", "chrome");    // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-        catalinaChromeCap.Add("browser_version", "latest");
-        catalinaChromeCap.Add("os", "osx");
-        catalinaChromeCap.Add("os_version", "Monterey");
-        catalinaChromeCap.Add("name", "Branded Google Chrome on Monterey");
-        catalinaChromeCap.Add("build", "playwright-dotnet-2");
-        catalinaChromeCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
-        catalinaChromeCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
-        capabilitiesList.Add(catalinaChromeCap);
 
-        Dictionary<string, string> catalinaEdgeCap = new Dictionary<string, string>();
-        catalinaEdgeCap.Add("browser", "edge");  // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-        catalinaEdgeCap.Add("browser_version", "latest");
-        catalinaEdgeCap.Add("os", "osx");
-        catalinaEdgeCap.Add("os_version", "Monterey");
-        catalinaEdgeCap.Add("name", "Branded Microsoft Edge on Monterey");
-        catalinaEdgeCap.Add("build", "playwright-dotnet-2");
-        catalinaEdgeCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
-        catalinaEdgeCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
-        capabilitiesList.Add(catalinaEdgeCap);
+        Dictionary<string, string> windowsChromeCap = new Dictionary<string, string>();
+        windowsChromeCap.Add("browser", "chrome");    // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
+        windowsChromeCap.Add("browser_version", "latest");
+        windowsChromeCap.Add("os", "Windows");
+        windowsChromeCap.Add("os_version", "11");
+        windowsChromeCap.Add("build", "browserstack-build-1");
+        windowsChromeCap.Add("buildTag", "Regression");
+        windowsChromeCap.Add("browserstack.debug", "true");
+        windowsChromeCap.Add("browserstack.networkLogs", "true");
+        windowsChromeCap.Add("browserstack.console", "info");
+        windowsChromeCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
+        windowsChromeCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
+        capabilitiesList.Add(windowsChromeCap);
 
-        Dictionary<string, string> catalinaFirefoxCap = new Dictionary<string, string>();
-        catalinaFirefoxCap.Add("browser", "playwright-firefox");    // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-        catalinaFirefoxCap.Add("browser_version", "latest");
-        catalinaFirefoxCap.Add("os", "osx");
-        catalinaFirefoxCap.Add("os_version", "Monterey");
-        catalinaFirefoxCap.Add("name", "Playwright firefox on Monterey");
-        catalinaFirefoxCap.Add("build", "playwright-dotnet-2");
-        catalinaFirefoxCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
-        catalinaFirefoxCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
-        capabilitiesList.Add(catalinaFirefoxCap);
 
-        Dictionary<string, string> catalinaWebkitCap = new Dictionary<string, string>();
-        catalinaWebkitCap.Add("browser", "playwright-webkit"); // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`\
-        catalinaWebkitCap.Add("browser_version", "latest");
-        catalinaWebkitCap.Add("os", "osx");
-        catalinaWebkitCap.Add("os_version", "Monterey");
-        catalinaWebkitCap.Add("name", "Playwright webkit on Monterey");
-        catalinaWebkitCap.Add("build", "playwright-dotnet-2");
-        catalinaWebkitCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
-        catalinaWebkitCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
-        capabilitiesList.Add(catalinaWebkitCap);
+        Dictionary<string, string> venturaWebkitCap = new Dictionary<string, string>();
+        venturaWebkitCap.Add("browser", "playwright-webkit");    // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
+        venturaWebkitCap.Add("browser_version", "latest");
+        venturaWebkitCap.Add("os", "osx");
+        venturaWebkitCap.Add("os_version", "Ventura");
+        venturaWebkitCap.Add("build", "browserstack-build-1");
+        venturaWebkitCap.Add("buildTag", "Regression");
+        venturaWebkitCap.Add("browserstack.debug", "true");
+        venturaWebkitCap.Add("browserstack.networkLogs", "true");
+        venturaWebkitCap.Add("browserstack.console", "info");
+        venturaWebkitCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
+        venturaWebkitCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
+        capabilitiesList.Add(venturaWebkitCap);
 
-        Dictionary<string, string> catalinaChromiumCap = new Dictionary<string, string>();
-        catalinaChromiumCap.Add("browser", "playwright-chromium"); // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-        catalinaChromiumCap.Add("browser_version", "latest");
-        catalinaChromiumCap.Add("os", "osx");
-        catalinaChromiumCap.Add("os_version", "Monterey");
-        catalinaChromiumCap.Add("name", "Playwright webkit on Monterey");
-        catalinaChromiumCap.Add("build", "playwright-dotnet-2");
-        catalinaChromiumCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
-        catalinaChromiumCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
-        capabilitiesList.Add(catalinaChromiumCap);
+        Dictionary<string, string> windowsFirefoxCap = new Dictionary<string, string>();
+        windowsFirefoxCap.Add("browser", "playwright-firefox"); // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`\
+        windowsFirefoxCap.Add("browser_version", "latest");
+        windowsFirefoxCap.Add("os", "Windows");
+        windowsFirefoxCap.Add("os_version", "11");
+        windowsFirefoxCap.Add("build", "browserstack-build-1");
+        windowsFirefoxCap.Add("buildTag", "Regression");
+        windowsFirefoxCap.Add("browserstack.debug", "true");
+        windowsFirefoxCap.Add("browserstack.networkLogs", "true");
+        windowsFirefoxCap.Add("browserstack.console", "info");
+        windowsFirefoxCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
+        windowsFirefoxCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
+        capabilitiesList.Add(windowsFirefoxCap);
 
         return capabilitiesList;
     }
@@ -105,6 +94,7 @@ class PlaywrightParallelTest
         var page = await browser.NewPageAsync();
         try
         {
+            await MarkTestName(page);
             page.SetDefaultTimeout(60000);
             await page.GotoAsync("https://bstackdemo.com/");
             await page.Locator("#\\31 > .shelf-item__buy-btn").ClickAsync();
@@ -130,5 +120,14 @@ class PlaywrightParallelTest
     public static async Task MarkTestStatus(string status, string reason, IPage page)
     {
         await page.EvaluateAsync("_ => {}", "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\":\"" + status + "\", \"reason\": \"" + reason + "\"}}");
+    }
+    public static async Task MarkTestName(IPage page)
+    {
+        string? thisFile = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName();
+        string[] result = thisFile.Split(new char[] { '/' });
+        string[] filenameResult = result.Last().Split(new char[] { '.' });
+        string? testName = filenameResult.First();
+
+        await page.EvaluateAsync("_ => {}", "browserstack_executor: {\"action\": \"setSessionName\", \"arguments\": {\"name\":\"" + testName + "\"}}");
     }
 }

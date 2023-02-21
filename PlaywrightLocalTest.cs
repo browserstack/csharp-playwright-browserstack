@@ -3,34 +3,117 @@ using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using BrowserStack;
+using System.Collections;
 
 class PlaywrightLocalTest
 {
+
     public static async Task main(string[] args)
     {
-        using var playwright = await Playwright.CreateAsync();
+        //  The following capability variables contains the set of os/browser environments where you want to run your tests. You can choose to alter this list according to your needs. Read more on https://browserstack.com/docs/automate/playwright/browsers-and-os
+        try
+        {
+            ArrayList capabilitiesList = getCapabilitiesList();
+            Task[] taskList = new Task[capabilitiesList.Count];
+
+            Local local = new Local();
+
+            List<KeyValuePair<string, string>> bsLocalArgs = new List<KeyValuePair<string, string>>();
+            bsLocalArgs.Add(new KeyValuePair<string, string>("key", "BROWSERSTACK_ACCESS_KEY"));
+            bsLocalArgs.Add(new KeyValuePair<string, string>("localIdentifier", "Test123"));
+          
+            local.start(bsLocalArgs);
+
+            for (int i = 0; i < capabilitiesList.Count; i++)
+            {
+                string capsJson;
+                capsJson = JsonConvert.SerializeObject(capabilitiesList[i]);
+                var task = Executetestwithcaps(capsJson);
+                taskList[i] = task;
+            }
+
+            await Task.WhenAll(taskList);
+            local.stop();
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
+
+    static ArrayList getCapabilitiesList()
+    {
+        ArrayList capabilitiesList = new ArrayList();
 
         string? BROWSERSTACK_USERNAME = Environment.GetEnvironmentVariable("BROWSERSTACK_USERNAME");
         string? BROWSERSTACK_ACCESS_KEY = Environment.GetEnvironmentVariable("BROWSERSTACK_ACCESS_KEY");
 
-        Dictionary<string, string> browserstackOptions = new Dictionary<string, string>();
-        browserstackOptions.Add("name", "Playwright local sample test");
-        browserstackOptions.Add("build", "playwright-dotnet-3");
-        browserstackOptions.Add("os", "osx");
-        browserstackOptions.Add("os_version", "catalina");
-        browserstackOptions.Add("browser", "chrome");   // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-        browserstackOptions.Add("browserstack.username", BROWSERSTACK_USERNAME);
-        browserstackOptions.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
-        browserstackOptions.Add("browserstack.local", "true");
-        string capsJson = JsonConvert.SerializeObject(browserstackOptions);
-        string cdpUrl = "wss://cdp.browserstack.com/playwright?caps=" + Uri.EscapeDataString(capsJson);
+        Dictionary<string, string> windowsChromeCap = new Dictionary<string, string>();
+        windowsChromeCap.Add("browser", "chrome");    // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
+        windowsChromeCap.Add("browser_version", "latest");
+        windowsChromeCap.Add("os", "Windows");
+        windowsChromeCap.Add("os_version", "11");
+        windowsChromeCap.Add("build", "browserstack-build-1");
+        windowsChromeCap.Add("buildTag", "Regression");
+        windowsChromeCap.Add("browserstack.debug", "true");
+        windowsChromeCap.Add("browserstack.networkLogs", "true");
+        windowsChromeCap.Add("browserstack.console", "info");
+        windowsChromeCap.Add("browserstack.local", "true");
+        windowsChromeCap.Add("browserstack.localIdentifier", "Test123");
+        windowsChromeCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
+        windowsChromeCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
+        capabilitiesList.Add(windowsChromeCap);
+
+
+        Dictionary<string, string> venturaWebkitCap = new Dictionary<string, string>();
+        venturaWebkitCap.Add("browser", "playwright-webkit");    // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
+        venturaWebkitCap.Add("browser_version", "latest");
+        venturaWebkitCap.Add("os", "osx");
+        venturaWebkitCap.Add("os_version", "Ventura");
+        venturaWebkitCap.Add("build", "browserstack-build-1");
+        venturaWebkitCap.Add("buildTag", "Regression");
+        venturaWebkitCap.Add("browserstack.debug", "true");
+        venturaWebkitCap.Add("browserstack.networkLogs", "true");
+        venturaWebkitCap.Add("browserstack.console", "info");
+        venturaWebkitCap.Add("browserstack.local", "true");
+        venturaWebkitCap.Add("browserstack.localIdentifier", "Test123");
+        venturaWebkitCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
+        venturaWebkitCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
+        capabilitiesList.Add(venturaWebkitCap);
+
+        Dictionary<string, string> windowsFirefoxCap = new Dictionary<string, string>();
+        windowsFirefoxCap.Add("browser", "playwright-firefox"); // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`\
+        windowsFirefoxCap.Add("browser_version", "latest");
+        windowsFirefoxCap.Add("os", "Windows");
+        windowsFirefoxCap.Add("os_version", "11");
+        windowsFirefoxCap.Add("build", "browserstack-build-1");
+        windowsFirefoxCap.Add("buildTag", "Regression");
+        windowsFirefoxCap.Add("browserstack.debug", "true");
+        windowsFirefoxCap.Add("browserstack.networkLogs", "true");
+        windowsFirefoxCap.Add("browserstack.console", "info");
+        windowsFirefoxCap.Add("browserstack.local", "true");
+        windowsFirefoxCap.Add("browserstack.localIdentifier", "Test123");
+        windowsFirefoxCap.Add("browserstack.username", BROWSERSTACK_USERNAME);
+        windowsFirefoxCap.Add("browserstack.accessKey", BROWSERSTACK_ACCESS_KEY);
+        capabilitiesList.Add(windowsFirefoxCap);
+
+        return capabilitiesList;
+    }
+
+    public static async Task Executetestwithcaps(string capabilities)
+    {
+        using var playwright = await Playwright.CreateAsync();
+        string cdpUrl = "wss://cdp.browserstack.com/playwright?caps=" + Uri.EscapeDataString(capabilities);
 
         await using var browser = await playwright.Chromium.ConnectAsync(cdpUrl);
         var page = await browser.NewPageAsync();
         try
         {
+            await MarkTestName(page);
             page.SetDefaultTimeout(60000);
-            await page.GotoAsync("https://localhost:3000/");
+            await page.GotoAsync("http://localhost:3000/");
             await page.Locator("#\\31 > .shelf-item__buy-btn").ClickAsync();
 
             var text = await page.Locator("#__next > div > div > div.float-cart.float-cart--open > div.float-cart__content > div.float-cart__shelf-container > div > div.shelf-item__details > p.title").TextContentAsync();
@@ -50,9 +133,20 @@ class PlaywrightLocalTest
             await MarkTestStatus("failed", "Something Failed", page);
         }
         await browser.CloseAsync();
+
     }
     public static async Task MarkTestStatus(string status, string reason, IPage page)
     {
         await page.EvaluateAsync("_ => {}", "browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\":\"" + status + "\", \"reason\": \"" + reason + "\"}}");
+    }
+
+    public static async Task MarkTestName(IPage page)
+    {
+        string? thisFile = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName();
+        string[] result = thisFile.Split(new char[] { '/' });
+        string[] filenameResult = result.Last().Split(new char[] { '.' });
+        string? testName = filenameResult.First();
+
+        await page.EvaluateAsync("_ => {}", "browserstack_executor: {\"action\": \"setSessionName\", \"arguments\": {\"name\":\"" + testName + "\"}}");
     }
 }

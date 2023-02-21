@@ -12,24 +12,24 @@
 
 ## Running your tests
 
-- To run a single test, run `dotnet run single`
 - To run a parallel test, run command `dotnet run parallel`
-- To run sessions on emulated devices, 
-`dotnet run iphonetest` or `dotnet run pixeltest`
-You can specify any device name from the below list: 
-https://github.com/microsoft/playwright/blob/main/packages/playwright-core/src/server/deviceDescriptorsSource.json
 
-  ### Run sample test on privately hosted websites
+  ### [Web application hosted on internal environment] Running your tests on BrowserStack using BrowserStackLocal
 
-    **Using Command-line Interface**
-    1. You have to download the BrowserStack Local binary from the links below (depending on your environment):
-        * [OS X (10.7 and above)](https://www.browserstack.com/browserstack-local/BrowserStackLocal-darwin-x64.zip)
-        * [Linux 32-bit](https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-ia32.zip)
-        * [Linux 64-bit](https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip)
-        * [Windows (XP and above)](https://www.browserstack.com/browserstack-local/BrowserStackLocal-win32.zip)
-    2. Once you have downloaded and unzipped the file, you can initiate the binary by running the command: `./BrowserStackLocal --key YOUR_ACCESS_KEY`
-    3. Once you see the terminal say "[SUCCESS]" You can now access your local server(s) in our remote browser”, your local testing connection is considered established.
-    4. You can then run the sample Local test using `dotnet run local`
+    #### Prerequisites
+
+    - Clone the [BrowserStack demo application](https://github.com/browserstack/browserstack-demo-app) repository.
+      ```sh
+      git clone https://github.com/browserstack/browserstack-demo-app
+      ```
+    - Please follow the README.md on the BrowserStack demo application repository to install and start the dev server on localhost.
+    - Note: You may need to provide additional BrowserStackLocal arguments to successfully connect your localhost environment with BrowserStack infrastructure. (e.g if you are behind firewalls, proxy or VPN).
+    - Further details for successfully creating a BrowserStackLocal connection can be found here:
+
+      - [Local Testing with Automate](https://www.browserstack.com/local-testing/automate)
+
+      #### Running the test using Local Testing:
+      - You can then run the sample Local test using `dotnet run local`
 
 
 ## Notes

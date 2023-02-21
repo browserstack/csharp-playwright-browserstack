@@ -10,6 +10,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Playwright" Version="1.28.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="BrowserStackLocal" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="BrowserStackLocal" />
+  </ItemGroup>
 </Project>
