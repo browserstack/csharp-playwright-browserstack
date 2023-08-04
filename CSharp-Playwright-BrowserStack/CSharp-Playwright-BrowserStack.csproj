@@ -19,6 +19,6 @@
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
 		<PackageReference Include="Microsoft.Playwright" Version="1.36.0" />
 		<PackageReference Include="Microsoft.Playwright.NUnit" Version="1.36.0" />
-		<PackageReference Include="BrowserStack.TestAdapter" Version="0.3.0" />
+		<PackageReference Include="BrowserStack.TestAdapter" Version="0.*" />
 	</ItemGroup>
 </Project>
