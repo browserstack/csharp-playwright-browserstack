@@ -17,13 +17,7 @@ This sample elaborates the [NUnit](http://www.nunit.org/) Integration with Brows
 * To run local tests, dotnet test --filter "Category=sample-local-test"
 ### Running your tests from Test Explorer
 - To run a parallel tests, run test with fixture `sample-test`
-```sh
-dotnet test --filter "Category=sample-test"
-```
 - To run local tests, run test with fixture `sample-local-test`
-```sh
-dotnet test --filter "Category=sample-local-test"
-```
 
  Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 
@@ -62,7 +56,7 @@ dotnet add BrowserStack.TestAdapter
   ```
 
 ## Additional Resources
-* [Documentation for writing automate test scripts in C#](https://www.browserstack.com/automate/c-sharp)
+* [Documentation for writing automate playwright test scripts in C#](https://www.browserstack.com/docs/automate/playwright/getting-started/c-sharp)
 * [Customizing your tests on BrowserStack](https://www.browserstack.com/automate/capabilities)
 * [Browsers & mobile devices for selenium testing on BrowserStack](https://www.browserstack.com/list-of-browsers-and-platforms?product=automate)
 * [Using REST API to access information about your tests via the command-line interface](https://www.browserstack.com/automate/rest-api)
