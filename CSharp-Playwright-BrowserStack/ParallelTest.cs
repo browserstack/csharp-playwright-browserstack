@@ -2,14 +2,13 @@
 
 namespace CSharpPlaywrightBrowserStack
 {
-    [TestFixture("parallel", "chrome")]
-    [TestFixture("parallel", "firefox")]
-    [TestFixture("parallel", "safari")]
-    [TestFixture("parallel", "edge")]
+    [TestFixture("parallel", "chrome", "parallel.conf.json")]
+    [TestFixture("parallel", "playwright-firefox", "parallel.conf.json")]
+    [TestFixture("parallel", "playwright-webkit", "parallel.conf.json")]
     [Parallelizable(ParallelScope.Fixtures)]
     [Category("sample-parallel-test")]
     public class ParallelTest : SingleTest
     {
-        public ParallelTest(string profile, string environment) : base(profile, environment) { }
+        public ParallelTest(string profile, string environment, string configFile) : base(profile, environment, configFile) { }
     }
 }

@@ -20,14 +20,20 @@
 		</PackageReference>
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
 		<PackageReference Include="Microsoft.Playwright" Version="1.36.0" />
+
+		<Content Include="local.conf.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="parallel.conf.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="single.conf.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 	<ItemGroup>
-		<None Include="App.config">
-			<SubType>Designer</SubType>
-		</None>
-		<None Include="packages.config" />
+	  <None Remove="local.conf.json" />
+	  <None Remove="parallel.conf.json" />
+	  <None Remove="single.conf.json" />
 	</ItemGroup>
-	  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
 </Project>
