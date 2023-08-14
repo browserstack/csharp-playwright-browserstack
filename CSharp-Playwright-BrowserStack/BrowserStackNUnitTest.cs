@@ -30,7 +30,6 @@ namespace CSharpPlaywrightBrowserStack
             // Get Configuration for correct profile
             string currentDirectory = Directory.GetCurrentDirectory();
             string path = Path.Combine(currentDirectory, configFile);
-            //string path = Path.Combine("/Users/kamalpreet/Documents/fork-samples/csharp-playwright-browserstack/CSharp-Playwright-BrowserStack/config.json");
             JObject config = JObject.Parse(File.ReadAllText(path));
             if (config is null)
                 throw new Exception("Configuration not found!");
