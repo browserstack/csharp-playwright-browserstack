@@ -1,0 +1,8 @@
+packages
+TestResults
+TestResult.xml
+bin
+obj
+.vs
+.DS_Store
+log

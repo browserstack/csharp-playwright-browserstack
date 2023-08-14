@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp-Playwright-BrowserStack", "CSharp-Playwright-BrowserStack\CSharp-Playwright-BrowserStack.csproj", "{5DC1EC78-C0C5-4869-9769-90718B820BB9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DC1EC78-C0C5-4869-9769-90718B820BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC1EC78-C0C5-4869-9769-90718B820BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC1EC78-C0C5-4869-9769-90718B820BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC1EC78-C0C5-4869-9769-90718B820BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A720641-5ECB-4F2D-8678-EB726CF8DDA7}
+	EndGlobalSection
+EndGlobal
