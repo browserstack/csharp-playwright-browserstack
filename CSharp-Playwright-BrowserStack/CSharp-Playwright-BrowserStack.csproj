@@ -19,7 +19,7 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-		<PackageReference Include="Microsoft.Playwright" Version="1.36.0" />
+		<PackageReference Include="Microsoft.Playwright" Version="*" />
 
 		<Content Include="local.conf.json">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
