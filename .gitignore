@@ -4,4 +4,5 @@ TestResult.xml
 bin
 obj
 .vs
+log
 .DS_Store
